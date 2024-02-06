@@ -1,0 +1,17 @@
+let input_image;
+let ml5_detector;
+
+function preload(){
+  input_image = loadImage("image_with_concepts.jpg");
+  ml5_detector = ml5.objectDetector('cocossd');
+}
+
+function setup(){
+  createCanvas(640, 480);
+  image(input_image, 0, 0);
+  ml5_detector.detect(input_image, gotDetections);
+}
+
+function gotDetections(err, dect){
+  console.log(dect);
+}
